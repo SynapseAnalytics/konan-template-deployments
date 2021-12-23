@@ -1,0 +1,24 @@
+# This file contains some configurations for your konan deployment
+# Read the comments carefully, and replace any string of the format {tempalte-value} with your actual value
+
+# Section related to where to push your generated image to
+# [docker-registry]
+
+# Possible values include: docker.io, quai.io, registry.gitlab.com and konancr.azurecr.io
+KONAN_CONTAINER_REGISTRY=docker.io
+
+# Your credentials for the above container registry
+KONAN_CONTAINER_REGISTRY_USERNAME={registry-username}
+KONAN_CONTAINER_REGISTRY_PASSWORD={registry-password}
+
+# Container registry namespace to push images to
+# Required for the KONAN_CONTAINER_REGISTRY konancr.azurecr.io. You can find it from the Konan Dashboard, under KCR.
+# Optional for other KONAN_CONTAINER_REGISTRY values. Will default to KONAN_CONTAINER_REGISTRY_USERNAME if unset
+# KONAN_CONTAINER_REGISTRY_NAMESPACE={registry-namespace}
+
+# Section related to generating your image
+# [dockerimage]
+
+# Naming and versioning your application
+KONAN_APP_NAME=test-app
+KONAN_APP_VERSION=v0.0.1a
