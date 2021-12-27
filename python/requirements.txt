@@ -1,0 +1,2 @@
+konan-sdk
+# Add your python requirements here
