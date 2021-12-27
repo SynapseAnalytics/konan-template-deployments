@@ -4,7 +4,7 @@ include $(cnf)
 export $(shell sed 's/=.*//' $(cnf))
 
 # Check if pushing to kcr or third-party container registry
-ifeq ($(KONAN_CONTAINER_REGISTRY),konancr.azurecr.io)
+ifeq ($(KONAN_CONTAINER_REGISTRY),konan.azurecr.io)
 	TAG_TARGETS = tag-for-kcr
 	PUBLISH_TARGETS = publish-kcr
 else
@@ -14,8 +14,8 @@ endif
 
 # Check if registry namespace is set or can be defaulted
 ifndef KONAN_CONTAINER_REGISTRY_NAMESPACE
-ifeq ($(KONAN_CONTAINER_REGISTRY),konancr.azurecr.io)
-$(error Using the konancr.azurecr.io KONAN_CONTAINER_REGISTRY yet KONAN_CONTAINER_REGISTRY_NAMESPACE is unset)
+ifeq ($(KONAN_CONTAINER_REGISTRY),konan.azurecr.io)
+$(error Using the konan.azurecr.io KONAN_CONTAINER_REGISTRY yet KONAN_CONTAINER_REGISTRY_NAMESPACE is unset)
 else
 # $(info KONAN_CONTAINER_REGISTRY_NAMESPACE is unset. Defaulting to $(KONAN_CONTAINER_REGISTRY_USERNAME))
 KONAN_CONTAINER_REGISTRY_NAMESPACE = $(KONAN_CONTAINER_REGISTRY_USERNAME)
@@ -55,7 +55,7 @@ tag-version: ## Generate image `latest` tag
 
 tag-for-kcr: ## Generate image for kcr
 	@echo 'creating tag for kcr'
-	docker tag $(KONAN_APP_NAME) konancr.azurecr.io/$(KONAN_CONTAINER_REGISTRY_NAMESPACE):$(KONAN_APP_NAME)
+	docker tag $(KONAN_APP_NAME) konan.azurecr.io/$(KONAN_CONTAINER_REGISTRY_NAMESPACE):$(KONAN_APP_NAME)
 
 # Login to container registry
 repo-login: ## Auto login to container registry
