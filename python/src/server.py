@@ -2,7 +2,7 @@ from konan_sdk.konan_service.services import KonanService
 from konan_sdk.konan_service.models import KonanServiceBaseModel
 from konan_sdk.konan_service.serializers import (
     KonanServiceBasePredictionRequest, KonanServiceBasePredictionResponse,
-    KonanServiceBaseEvaluateRequest, KonanServiceEvaluateResponse,
+    KonanServiceBaseEvaluateRequest, KonanServiceBaseEvaluateResponse,
     )
 
 
@@ -62,7 +62,7 @@ class MyModel(KonanServiceBaseModel):
         # Optionally postprocess the prediction here
         return prediction
 
-    def evaluate(self, req: KonanServiceBaseEvaluateRequest) -> KonanServiceEvaluateResponse:
+    def evaluate(self, req: KonanServiceBaseEvaluateRequest) -> KonanServiceBaseEvaluateResponse:
         """Evaluates the model based on passed predictions and their ground truths
 
         Args:
