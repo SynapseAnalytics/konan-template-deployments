@@ -2,7 +2,7 @@ from konan_sdk.konan_service.services import KonanService
 from konan_sdk.konan_service.models import KonanServiceBaseModel
 from konan_sdk.konan_service.serializers import (
     KonanServiceBasePredictionRequest, KonanServiceBasePredictionResponse,
-    KonanServiceBaseEvaluateRequest, KonanServiceEvaluateResponse
+    KonanServiceBaseEvaluateRequest, KonanServiceEvaluateResponse,
     )
 
 
