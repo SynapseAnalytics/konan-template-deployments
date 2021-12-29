@@ -1,7 +1,9 @@
 from konan_sdk.konan_service.services import KonanService
 from konan_sdk.konan_service.models import KonanServiceBaseModel
 from konan_sdk.konan_service.serializers import (
-    KonanServiceBasePredictionRequest, KonanServiceBasePredictionResponse)
+    KonanServiceBasePredictionRequest, KonanServiceBasePredictionResponse,
+    KonanServiceBaseEvaluateRequest, KonanServiceBaseEvaluateResponse,
+    )
 
 
 class MyPredictionRequest(KonanServiceBasePredictionRequest):
@@ -38,10 +40,9 @@ class MyModel(KonanServiceBaseModel):
 
         Maybe load weights, connect to a database, etc ..
         For example, the following code will load a model saved as a model.pickle file in the models/ directory
-        
         import pickle
-        from konan_sdk.konan_service import constants as Konan_Service_Constants
-        self.loaded_model = pickle.load(open(f"{Konan_Service_Constants.MODELS_DIR}/model.pickle", 'rb'))
+        from konan_sdk.konan_service import constants as Konan_Constants
+        self.loaded_model = pickle.load(open(f"{Konan_Constants.MODELS_DIR}/model.pickle", 'rb'))
         """
         super().__init__()
         # TODO: [3] Initialize your model
@@ -60,6 +61,19 @@ class MyModel(KonanServiceBaseModel):
         prediction = "" # Use your logic to make a prediction
         # Optionally postprocess the prediction here
         return prediction
+
+    def evaluate(self, req: KonanServiceBaseEvaluateRequest) -> KonanServiceBaseEvaluateResponse:
+        """Evaluates the model based on passed predictions and their ground truths
+
+        Args:
+            req (KonanServiceBaseEvaluateRequest): includes passed predictions and their ground truths
+
+        Returns:
+            KonanServiceEvaluateResponse: the evaluation(s) of the model based on some metrics
+        """
+        # TODO: [5] Implement your evaluation logic
+        evaluation = "" # Use your logic to make an evaluation
+        return evaluation
 
 
 app = KonanService(MyPredictionRequest, MyPredictionResponse, MyModel)
