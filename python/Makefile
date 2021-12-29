@@ -45,11 +45,11 @@ stop: ## Stop and remove a running container
 # Tag the image
 tag: $(TAG_TARGETS) ## Generate image tag(s)
 
-tag-latest: ## Generate image `{KONAN_APP_VERSION}` tag
+tag-latest: ## Generate image `latest` tag
 	@echo 'creating tag latest'
 	docker tag $(KONAN_APP_NAME) $(KONAN_CONTAINER_REGISTRY)/$(KONAN_CONTAINER_REGISTRY_NAMESPACE)/$(KONAN_APP_NAME):latest
 
-tag-version: ## Generate image `latest` tag
+tag-version: ## Generate image `{KONAN_APP_VERSION}` tag
 	@echo 'creating tag $(KONAN_APP_VERSION)'
 	docker tag $(KONAN_APP_NAME) $(KONAN_CONTAINER_REGISTRY)/$(KONAN_CONTAINER_REGISTRY_NAMESPACE)/$(KONAN_APP_NAME):$(KONAN_APP_VERSION)
 
