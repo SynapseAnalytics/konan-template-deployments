@@ -1,0 +1,6 @@
+**
+!data/**
+!models/**
+!scripts/**
+!src/**
+!requirements.txt
