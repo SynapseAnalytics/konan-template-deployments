@@ -1,0 +1,5 @@
+tidyr
+dplyr
+magrittr
+httr
+jsonlite
