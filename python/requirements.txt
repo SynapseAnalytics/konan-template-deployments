@@ -1,2 +1,2 @@
-konan-sdk
+konan-sdk>=1.2.6
 # Add your python requirements here
