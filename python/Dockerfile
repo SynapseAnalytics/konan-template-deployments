@@ -5,6 +5,8 @@ FROM python:3.7-slim-stretch
 ARG user=konan-user
 ARG port=8000
 
+ENV KONAN_PORT=${port}
+
 # Set some enviroment variables for directories
 ENV KONAN_SERVICE_BASE_DIR /home/${user}/app
 
@@ -28,7 +30,7 @@ USER ${user}
 # Copy relevant files and directories
 RUN mkdir ${KONAN_SERVICE_BASE_DIR}
 WORKDIR ${KONAN_SERVICE_BASE_DIR}
-COPY . ${KONAN_SERVICE_BASE_DIR}
+COPY --chown=${user} . ${KONAN_SERVICE_BASE_DIR}
 
 # Install requirements
 RUN pip install --user --upgrade pip && pip install --user --upgrade setuptools uvicorn
@@ -36,4 +38,9 @@ RUN pip install --user --no-cache-dir -r ${KONAN_SERVICE_BASE_DIR}/requirements.
 
 # Expose port and run web server
 EXPOSE ${port}
-CMD ["uvicorn", "--host", "0.0.0.0", "--port", "${port}",  "--workers", "1",  "--factory", "${KONAN_SERVICE_SRC_DIR}/server:app"]
+WORKDIR ${KONAN_SERVICE_SRC_DIR}
+CMD [ \
+    "sh", \
+    "-c", \
+    "uvicorn --host 0.0.0.0 --port ${KONAN_PORT} --workers 1 --factory server:app" \
+]
