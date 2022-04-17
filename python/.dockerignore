@@ -1,6 +1,11 @@
-**
-!data/**
-!models/**
-!scripts/**
-!src/**
-!requirements.txt
+.konan
+Makefile
+
+examples/*
+tests/*
+
+**/README.md
+
+.flake8
+**/__pycache__/*
+**/venv/*

@@ -67,10 +67,10 @@ function(req, feat_1_int, feat_2_int = NULL, feat_1_char, feat_2_char = NULL) {
   check_required_parameters(names(input_df), required_parameters)
   check_parameter_ranges(input_df)
 
-  # These lines assume you placed your models in the models/ folder
-  if(input_df$feat_1_char == 'Green') model_rds_path <-  paste(Sys.getenv("KONAN_SERVICE_MODELS_DIR"), "green_model.rds", sep="/")
-  if(input_df$feat_1_char == 'Red') model_rds_path <-  paste(Sys.getenv("KONAN_SERVICE_MODELS_DIR"), "red_model.rds", sep="/")
-  if(input_df$feat_1_char == 'Blue') model_rds_path <-  paste(Sys.getenv("KONAN_SERVICE_MODELS_DIR"), "blue_model.rds", sep="/")
+  # These lines assume you placed your models in the artifacts/ folder
+  if(input_df$feat_1_char == 'Green') model_rds_path <-  paste(Sys.getenv("KONAN_SERVICE_ARTIFACTS_DIR"), "green_model.rds", sep="/")
+  if(input_df$feat_1_char == 'Red') model_rds_path <-  paste(Sys.getenv("KONAN_SERVICE_ARTIFACTS_DIR"), "red_model.rds", sep="/")
+  if(input_df$feat_1_char == 'Blue') model_rds_path <-  paste(Sys.getenv("KONAN_SERVICE_ARTIFACTS_DIR"), "blue_model.rds", sep="/")
 
   model <- readRDS(model_rds_path)
   model_input <- input_df %>% select(feat_1_int, feat_2_int) %>% as.matrix()
