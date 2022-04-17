@@ -16,11 +16,10 @@ The aim of this repository is to guide a data scientist, software engineer, or i
 The template deployments inside this repo are organized by *Programming language*. In each `<programming-language>` folder, you should find the following subfolders and files:
 
 - `src/` should contain the source code of your AI model and its logic
-- `models/` is a folder in which you can add ready-made models to your logic. They can, for example, be picked files of models trained and saved.
-- `scripts/` folder is provided so that you can add any extra scripts, in any programming language of your chosing, as helper files for your main source code.
-- `data/` should contain any data files (CSVs and such) needed by your machine learning model.
+- `artifacts/` is a folder in which you can add ready-made models and their artifacts to your logic. They can, for example, be pickled files of models trained and saved.
 - The `.konan` file should contain the environment variables needed in order to generate your docker image and prepare your **Konan** model. For example, you should specify your docker credentials in there.
-- The `.dockerignore`, `Dockerfile`, `Makefile` and other scary sounding files are used to automtically generate your docker image and Konan-based model. Of course, feel free to check them out, but you shouldn't need to interact with them.
+- The `retrain.sh` file should contain the command to invoke the retraining pipeline. It is required if your model supports retraining.
+- The `.dockerignore`, `Dockerfile`, `Makefile` and other scary sounding files are used to automatically generate your docker image and Konan-based model. Of course, feel free to check them out, but you shouldn't need to interact with them.
 
 ## Usage
 
